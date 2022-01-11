@@ -7,6 +7,8 @@ namespace Camel
         static void Main(string[] args)
         {
             // variable initialization
+            Random random = new Random();
+
             int player_sales = 10;
             int enemy_sales = 0;
             int GOAL = 100;
@@ -14,7 +16,10 @@ namespace Camel
             int supply_orders = 3;
             int supplies = 100;
 
-            int turns_since_office_party = 0;
+            int office_morale = 10;
+
+            int player_new_sales = 0;
+            int enemy_new_sales = 0;
 
             //game introduction
             Console.WriteLine("---------------------------------------------------------\n" +
@@ -48,19 +53,23 @@ namespace Camel
                 //analyze player commands
                 if (userCommand.ToUpper() == "A")
                 {
-                    Console.WriteLine("Batteries changed.");
+                    Console.WriteLine("Supplies Ordered. Should be here by tomorrow.");
                 }
                 else if (userCommand.ToUpper() == "B")
                 {
-                    Console.WriteLine("You walk at a brisk pace.");
+                    player_new_sales = random.Next(2, 7);
+                    player_sales += player_new_sales;
+                    Console.WriteLine("you made " + player_new_sales + " new sales!");
                 }
                 else if (userCommand.ToUpper() == "C")
                 {
-                    Console.WriteLine("You charge ahead, pushing yourself to move as fast as you can");
+                    player_new_sales = random.Next(5, 14);
+                    player_sales += player_new_sales;
+                    Console.WriteLine("you made " + player_new_sales + " new sales!");
                 }
                 else if (userCommand.ToUpper() == "D")
                 {
-                    Console.WriteLine("You pause for a minute, holding your head, catching your breath, and slowing your heartrate");
+                    Console.WriteLine("You have a fun office party. Office morale is restored!");
                 }
                 else if (userCommand.ToUpper() == "E")
                 {
@@ -80,7 +89,11 @@ namespace Camel
 
                 if(player_sales >= GOAL)
                 {
-                    Console.WriteLine("The Voice enters your head once more.\n\n\"It's okay. You're safe now.\"");
+                    Console.WriteLine("Bestie Succeeded!");
+                }
+                else if(enemy_sales >= player_sales)
+                {
+                    Console.WriteLine("Bestie Failed!");
                 }
             }
         }
