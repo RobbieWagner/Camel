@@ -17,7 +17,9 @@ namespace Camel
             int turns_since_rest = 0;
 
             //game introduction
-            Console.WriteLine("Welcome to Camel");
+            Console.WriteLine("The year is 1995. You are a park ranger in Southern Montana working at night. " +
+                "During one of your rounds surveying the park, you recieve a call on the emergency radio. " +
+                "\nHello?\nIs anyone there?\nThank God.\nLook. I need some help.");
 
             bool done = false;
 
@@ -69,9 +71,9 @@ namespace Camel
                     Console.WriteLine("Invalid input. Please try again.");
                 }
 
-                if(done)
+                if(player_pos >= GOAL)
                 {
-
+                    Console.WriteLine("The Voice enters your head once more.\n\n\"It's okay. You're safe now.\"");
                 }
             }
         }
