@@ -18,11 +18,12 @@ namespace Camel
 
             int office_morale = 10;
 
-            int player_new_sales = 0;
-            int enemy_new_sales = 0;
+            int player_new_sales;
+            int enemy_new_sales;
+            int office_morale_detriment;
 
             //game introduction
-            Console.WriteLine("---------------------------------------------------------\n" +
+            Console.Write("---------------------------------------------------------\n" +
                 "NEW MESSAGE RECIEVED\n\nHey Girlie! This is your boss here." +
                 " Hope my favorite fashion designer and her team is enjoying the new office space. It cost quite a pretty penny.\n\n" +
                 "Okay Girlie, time for some fashion business realness. You remember Brenda's fashion company \"Are You For Real?!?!?\"?\n" +
@@ -53,22 +54,38 @@ namespace Camel
                 //analyze player commands
                 if (userCommand.ToUpper() == "A")
                 {
+                    if(supply_orders > 0)
+                    {
+                        supply_orders--;
+                        enemy_new_sales = random.Next(4, 8);
+                        enemy_sales += enemy_new_sales;
+                    }
                     Console.WriteLine("Supplies Ordered. Should be here by tomorrow.");
                 }
                 else if (userCommand.ToUpper() == "B")
                 {
+                    office_morale
                     player_new_sales = random.Next(2, 7);
                     player_sales += player_new_sales;
+                    enemy_new_sales = random.Next(4, 8);
+                    enemy_sales += enemy_new_sales;
+
+
                     Console.WriteLine("you made " + player_new_sales + " new sales!");
                 }
                 else if (userCommand.ToUpper() == "C")
                 {
                     player_new_sales = random.Next(5, 14);
                     player_sales += player_new_sales;
+                    enemy_new_sales = random.Next(4, 8);
+                    enemy_sales += enemy_new_sales;
                     Console.WriteLine("you made " + player_new_sales + " new sales!");
                 }
                 else if (userCommand.ToUpper() == "D")
                 {
+                    enemy_new_sales = random.Next(4, 8);
+                    enemy_sales += enemy_new_sales;
+                    office_morale = 10;
                     Console.WriteLine("You have a fun office party. Office morale is restored!");
                 }
                 else if (userCommand.ToUpper() == "E")
