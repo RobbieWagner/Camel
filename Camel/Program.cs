@@ -11,6 +11,11 @@ namespace Camel
             int enemy_pos = 0;
             int GOAL = 100;
 
+            int batteries = 3;
+            int battery_level = 100;
+
+            int turns_since_rest = 0;
+
             //game introduction
             Console.WriteLine("Welcome to Camel");
 
@@ -21,7 +26,7 @@ namespace Camel
                 //prompt the user with possible actions
                 Console.WriteLine();
                 Console.WriteLine("A. Change Batteries");
-                Console.WriteLine("B. Move ahead slowly");
+                Console.WriteLine("B. Move ahead");
                 Console.WriteLine("C. Run");
                 Console.WriteLine("D. Rest");
                 Console.WriteLine("E. Check Info");
@@ -36,20 +41,23 @@ namespace Camel
                 {
                     Console.WriteLine("Batteries changed.");
                 }
-                else if (userCommand.ToUpper() == "B"){
-
+                else if (userCommand.ToUpper() == "B")
+                {
+                    Console.WriteLine("You walk at a brisk pace.");
                 }
                 else if (userCommand.ToUpper() == "C")
                 {
-
+                    Console.WriteLine("You charge ahead, pushing yourself to move as fast as you can");
                 }
                 else if (userCommand.ToUpper() == "D")
                 {
-
+                    Console.WriteLine("You pause for a minute, holding your head, catching your breath, and slowing your heartrate");
                 }
                 else if (userCommand.ToUpper() == "E")
                 {
-
+                    Console.WriteLine("Your Position: " + player_pos
+                        + "\nIts Position: " + enemy_pos
+                        + "\nBatteries: " + batteries);
                 }
                 else if (userCommand.ToUpper() == "F")
                 {
@@ -59,6 +67,11 @@ namespace Camel
                 else
                 {
                     Console.WriteLine("Invalid input. Please try again.");
+                }
+
+                if(done)
+                {
+
                 }
             }
         }
