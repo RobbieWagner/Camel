@@ -4,11 +4,12 @@ namespace Camel
 {
     class Program
     {
-        public static void Increase_player_sales(int player_sales, int player_new_sales, Random random, bool crunching)
+        public static int Increase_player_sales(int player_sales, Random random, bool crunching)
         {
             //increases the player's sales
             int lower_bounds;
             int upper_bounds;
+            int player_new_sales;
             if (crunching)
             {
                 lower_bounds = 5;
@@ -16,19 +17,24 @@ namespace Camel
             }
             else
             {
-                lower_bounds = 2;
-                upper_bounds = 7;
+                lower_bounds = 3;
+                upper_bounds = 10;
             }
             player_new_sales = random.Next(lower_bounds, upper_bounds);
             player_sales += player_new_sales;
+
+            Console.WriteLine(" You made " + player_new_sales + " new sales!");
+            return player_sales;
         }
 
-        public static void Increase_enemy_sales(int enemy_sales, Random random)
+        public static int Increase_enemy_sales(int enemy_sales, Random random)
         {
             //increases the enemies sales
             int lower_bounds = 3;
             int upper_bounds = 10;
             enemy_sales += random.Next(lower_bounds, upper_bounds);
+
+            return enemy_sales;
         }
 
         static void Main(string[] args)
@@ -40,7 +46,7 @@ namespace Camel
             // variable initialization
             Random random = new Random();
 
-            int player_sales = 10;
+            int player_sales = 12;
             int enemy_sales = 0;
             int GOAL = 100;
 
@@ -48,8 +54,6 @@ namespace Camel
             int supplies = 100;
 
             int office_morale = 10;
-
-            int player_new_sales = 0;
 
             //game introduction
             Console.WriteLine(" ---------------------------------------------------------\n" +
@@ -96,33 +100,29 @@ namespace Camel
                         {
                             supply_orders--;
                             supplies = 100;
-                            Increase_enemy_sales(enemy_sales, random);
+                            enemy_sales = Increase_enemy_sales(enemy_sales, random);
                         }
                         Console.WriteLine(" Supplies Ordered. Should be here by tomorrow.");
                     }
                     else if (userCommand.ToUpper() == "B")
                     {
-                        Increase_player_sales(player_sales, player_new_sales, random, false);
-                        Increase_enemy_sales(enemy_sales, random);
+                        player_sales = Increase_player_sales(player_sales, random, false);
+                        enemy_sales = Increase_enemy_sales(enemy_sales, random);
 
                         supplies -= random.Next(10, 21);
                         office_morale--;
-
-                        Console.WriteLine(" You made " + player_new_sales + " new sales!");
                     }
                     else if (userCommand.ToUpper() == "C")
                     {
-                        Increase_player_sales(player_sales, player_new_sales, random, true);
-                        Increase_enemy_sales(enemy_sales, random);
+                        player_sales = Increase_player_sales(player_sales, random, true);
+                        enemy_sales = Increase_enemy_sales(enemy_sales, random);
 
                         supplies -= random.Next(10, 21);
                         office_morale -= random.Next(1, 4);
-
-                        Console.WriteLine(" You made " + player_new_sales + " new sales!");
                     }
                     else if (userCommand.ToUpper() == "D")
                     {
-                        Increase_enemy_sales(enemy_sales, random);
+                        enemy_sales = Increase_enemy_sales(enemy_sales, random);
                         office_morale = 10;
                         Console.WriteLine(" You have a fun office party. Office morale is restored!");
                     }
