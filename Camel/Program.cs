@@ -130,6 +130,7 @@ namespace Camel
                     {
                         Console.WriteLine(" Your Sales: " + player_sales
                             + "\n Are You For Real?!?!?'s Sales: " + enemy_sales
+                            + "\n Supplies: " + supplies
                             + "\n Supply Shipments Available: " + supply_orders);
                     }
                     else if (userCommand.ToUpper() == "F")
