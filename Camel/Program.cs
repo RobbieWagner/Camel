@@ -5,7 +5,15 @@ namespace Camel
     class Program
     {
 
-        public static int IncreasePlayerSales(int playerSales, Random random, bool crunching)
+        static int PlayerSales = 12;
+        static int EnemySales = 0;
+        static int SalesGoal = 100;
+        static int SupplyOrders = 3;
+        static int Supplies = 100;
+        static int OfficeMorale = 10;
+        static Random random = new Random();
+
+        static void IncreasePlayerSales(bool crunching)
         {
             //increases the player's sales
             int lowerBound;
@@ -16,27 +24,52 @@ namespace Camel
             {
                 lowerBound = 5;
                 upperBound = 14;
+                OfficeMorale -= random.Next(1, 4);
             }
             else
             {
                 lowerBound = 3;
                 upperBound = 10;
+                OfficeMorale--;
             }
             playerNewSales = random.Next(lowerBound, upperBound);
-            playerSales += playerNewSales;
+            PlayerSales += playerNewSales;
+            Supplies -= random.Next(10, 21);
 
             Console.WriteLine(" You made " + playerNewSales + " new sales!");
-            return playerSales;
         }
 
-        public static int IncreaseEnemySales(int enemySales, Random random)
+        static void IncreaseEnemySales()
         {
             //increases the enemies sales
             int lowerBound = 3;
             int upperBound = 10;
-            enemySales += random.Next(lowerBound, upperBound);
+            EnemySales += random.Next(lowerBound, upperBound);
+        }
 
-            return enemySales;
+        static void BudgetIncrease()
+        {
+            //replenishes supply orders and increases office morale
+            Console.WriteLine(" ---------------------------------------------------------");
+            Console.WriteLine(" NEW MESSAGE RECIEVED");
+            Console.WriteLine(" Good Morning,");
+            Console.WriteLine(" This is Charles from the Budget Committee. We were just going over our budgets for this term");
+            Console.WriteLine(" and it looks like there's some extra money in the budget for your team.");
+            Console.WriteLine(" You'll be able to use this budget to make get more supplies if needed.");
+            Console.WriteLine(" We also already went ahead and spent some of that money on a pizza party for your team later today.");
+            Console.WriteLine("\n Keep up the great work! Your team is putting out some great products!");
+            Console.WriteLine(" My husband is especially fond of the shark print shirt you released the other week.");
+            Console.WriteLine("\n Wishing you the best,\n Charles from the Budget Committee");
+            Console.WriteLine(" ---------------------------------------------------------");
+
+            SupplyOrders = 3;
+            RestoreOfficeMorale();
+        }
+
+        static void RestoreOfficeMorale()
+        {
+            OfficeMorale = 10;
+            Console.WriteLine(" Your team has a fun office party. Office Morale Restored!");
         }
 
         static void Main(string[] args)
@@ -45,18 +78,6 @@ namespace Camel
 
             while (!Done)
             { 
-            // variable initialization
-            Random random = new Random();
-
-            int PlayerSales = 12;
-            int EnemySales = 0;
-            int SalesGoal = 100;
-
-            int SupplyOrders = 3;
-            int Supplies = 100;
-
-            int OfficeMorale = 10;
-
                 //game introduction
                 Console.WriteLine(" ---------------------------------------------------------");
                 Console.WriteLine(" NEW MESSAGE RECIEVED");
@@ -73,9 +94,12 @@ namespace Camel
                 Console.WriteLine("---------------------------------------------------------");
 
             bool GameOver = false;
-
                 while (!GameOver)
                 {
+                    if (random.Next(20) == 0)
+                    {
+                        BudgetIncrease();
+                    }
                     //prompt the user with possible actions
                     Console.WriteLine();
                     Console.WriteLine(" A. Order Supplies");
@@ -106,31 +130,27 @@ namespace Camel
                         {
                             SupplyOrders--;
                             Supplies = 100;
-                            EnemySales = IncreaseEnemySales(EnemySales, random);
+                            IncreaseEnemySales();
                         }
                         Console.WriteLine(" Supplies Ordered. Should be here by tomorrow.");
                     }
                     else if (userCommand.ToUpper().Equals("B"))
                     {
-                        PlayerSales = IncreasePlayerSales(PlayerSales, random, false);
-                        EnemySales = IncreaseEnemySales(EnemySales, random);
-
-                        Supplies -= random.Next(10, 21);
-                        OfficeMorale--;
+                        //Increases the player sales and enemy sales
+                        IncreasePlayerSales(false);
+                        IncreaseEnemySales();
                     }
                     else if (userCommand.ToUpper().Equals("C"))
                     {
-                        PlayerSales = IncreasePlayerSales(PlayerSales, random, true);
-                        EnemySales = IncreaseEnemySales(EnemySales, random);
-
-                        Supplies -= random.Next(10, 21);
-                        OfficeMorale -= random.Next(1, 4);
+                        //Increases the player sales sharply, and the enemy sales
+                        IncreasePlayerSales(true);
+                        IncreaseEnemySales();
                     }
                     else if (userCommand.ToUpper().Equals("D"))
                     {
-                        EnemySales = IncreaseEnemySales(EnemySales, random);
-                        OfficeMorale = 10;
-                        Console.WriteLine(" You have a fun office party. Office morale is restored!");
+                        //Restores office morale
+                        IncreaseEnemySales();
+                        RestoreOfficeMorale();
                     }
                     else if (userCommand.ToUpper().Equals("E"))
                     {
@@ -143,8 +163,7 @@ namespace Camel
                     }
                     else if (userCommand.ToUpper().Equals("Q"))
                     {
-                        Console.WriteLine(" Thank you for playing.");
-                        Done = true;
+                        Console.WriteLine(" GAME OVER");
                         GameOver = true;
                     }
                     else
