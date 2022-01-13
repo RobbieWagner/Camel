@@ -5,10 +5,6 @@ namespace Camel
     class Program
     {
 
-        public static void OrderSupplies()
-        {
-
-        }
         public static int IncreasePlayerSales(int playerSales, Random random, bool crunching)
         {
             //increases the player's sales
@@ -64,7 +60,7 @@ namespace Camel
                 //game introduction
                 Console.WriteLine(" ---------------------------------------------------------");
                 Console.WriteLine(" NEW MESSAGE RECIEVED");
-                Console.WriteLine("\n  Hey Girlie!This is your boss here.");
+                Console.WriteLine("\n Hey Girlie! This is your boss here.");
                 Console.WriteLine(" Hope my favorite fashion designer and her team is enjoying the new office space. It cost quite a pretty penny!");
                 Console.WriteLine("\n Okay Girlie, time for some fashion business realness. You remember Brenda's fashion company \"Are You For Real?!?!?\"?");
                 Console.WriteLine(" Well apparently that skank started releasing new fashion lines like crazy,");
@@ -138,13 +134,16 @@ namespace Camel
                     }
                     else if (userCommand.ToUpper().Equals("E"))
                     {
-                        Console.WriteLine(" Your Sales: " + PlayerSales
-                            + "\n Are You For Real?!?!?'s Sales: " + EnemySales
-                            + "\n Supply Shipments Available: " + SupplyOrders);
+                        Console.WriteLine(" Your Sales: " + PlayerSales);
+                        Console.WriteLine(" Are You For Real?!?!?'s Sales: " + EnemySales);
+                        Console.WriteLine(" Sales Ahead: " + (PlayerSales - EnemySales));
+                        Console.WriteLine();
+                        Console.WriteLine(" Current Supplies: " + Supplies);
+                        Console.WriteLine(" Supply Shipments Available: " + SupplyOrders);
                     }
                     else if (userCommand.ToUpper().Equals("Q"))
                     {
-                        Console.WriteLine(" Thank you for playing");
+                        Console.WriteLine(" Thank you for playing.");
                         Done = true;
                         GameOver = true;
                     }
@@ -208,11 +207,34 @@ namespace Camel
                 }
 
                 //check if the user would like to play again
-                Console.WriteLine(" Would you like to play again (Y/N)? ");
-                string UserQuit = Console.ReadLine();
-                if (UserQuit.ToUpper().Equals("Y"))
+                bool Decided = false;
+                while (!Decided)
                 {
-                    Done = true;
+                    Console.WriteLine(" Would you like to play again (Y/N)? ");
+                    string UserQuit = Console.ReadLine();
+                    if (UserQuit.ToUpper().Equals("Y"))
+                    {
+                        Console.WriteLine(" Starting New Game");
+                        Decided = true;
+                    }
+                    else if (UserQuit.ToUpper().Equals("N"))
+                    {
+                        Console.WriteLine(" Thank you for playing.");
+                        Done = true;
+                        Decided = true;
+                    }
+                    else if (UserQuit.ToUpper().Equals("EASTER EGG"))
+                    {
+                        Console.WriteLine(" Nice job! You found the Easter Egg");
+                        Console.WriteLine(" That's it. What? You expected a prize or something?");
+                        Console.WriteLine(" Fine! I'll give you a prize. Here");
+                        Console.BackgroundColor = ConsoleColor.Magenta;
+                        Console.WriteLine(" There. Now the screen is pink. Happy?");
+                    }
+                    else
+                    {
+                        Console.WriteLine(" Invalid input. Please try again.");
+                    }
                 }
             }
         }
