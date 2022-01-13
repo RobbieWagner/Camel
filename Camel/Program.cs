@@ -231,6 +231,7 @@ namespace Camel
                         Console.WriteLine();
                         Console.BackgroundColor = ConsoleColor.Magenta;
                         Console.Write(" There. Now the text background is pink. Happy?");
+                        Console.WriteLine();
                     }
                     else
                     {
