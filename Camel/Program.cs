@@ -193,7 +193,7 @@ namespace Camel
                     else if (OfficeMorale <= 0)
                     {
                         Console.WriteLine(" ---------------------------------------------------------");
-                        Console.WriteLine(" NEW MESSAGE RECIEVED\n\n Hey Bitch!\n\n WTF is going with your team?\nMany of them are refusing to work, ");
+                        Console.WriteLine(" NEW MESSAGE RECIEVED\n\n Hey Bitch!\n\n WTF is going with your team?");
                         Console.WriteLine(" Many of them are refusing to work, they're filing complaints, and I think one of them tried to doxx me.");
                         Console.WriteLine(" Anywho, due to the recent sitch, we're gonna have to let you go... super unfair, I know.");
                         Console.WriteLine(" But hey, if it makes you feel better, my fiance totally");
@@ -229,7 +229,7 @@ namespace Camel
                         Console.WriteLine(" That's it. What? You expected a prize or something?");
                         Console.WriteLine(" Fine! I'll give you a prize. Here");
                         Console.BackgroundColor = ConsoleColor.Magenta;
-                        Console.WriteLine(" There. Now the screen is pink. Happy?");
+                        Console.WriteLine(" There. Now the text background is pink. Happy?");
                     }
                     else
                     {
