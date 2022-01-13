@@ -228,8 +228,9 @@ namespace Camel
                         Console.WriteLine(" Nice job! You found the Easter Egg");
                         Console.WriteLine(" That's it. What? You expected a prize or something?");
                         Console.WriteLine(" Fine! I'll give you a prize. Here");
+                        Console.WriteLine();
                         Console.BackgroundColor = ConsoleColor.Magenta;
-                        Console.WriteLine(" There. Now the text background is pink. Happy?");
+                        Console.Write(" There. Now the text background is pink. Happy?");
                     }
                     else
                     {
