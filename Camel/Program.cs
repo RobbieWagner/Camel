@@ -89,8 +89,8 @@ namespace Camel
                 Console.WriteLine(" (Like we can't let Brenda win, girl. I mean, she called my fiance an Oompa Loompa TO HIS FACE ");
                 Console.WriteLine(" at last years fashion conference. Ikr?).");
                 Console.WriteLine(" Look. I need to stay on top. My fiance just put the down payment on our yacht, and it's non-refundable.\n That being said,\n ");
-                Console.WriteLine(" I'm gonna need you to ramp up production. Make some bitching lines, and get us some sales! ");
-                Console.WriteLine(" I believe in you, bitch! <3\n\n Love,\n Your #Girlboss");
+                Console.WriteLine(" I'm gonna need you to ramp up production. Make some lines, and get us some sales! ");
+                Console.WriteLine(" I believe in you, babe! <3\n\n Love,\n Your #Girlboss");
                 Console.WriteLine("---------------------------------------------------------");
 
             bool GameOver = false;
