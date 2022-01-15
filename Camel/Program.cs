@@ -212,7 +212,7 @@ namespace Camel
                     else if (OfficeMorale <= 0)
                     {
                         Console.WriteLine(" ---------------------------------------------------------");
-                        Console.WriteLine(" NEW MESSAGE RECIEVED\n\n Hey Bitch!\n\n WTF is going with your team?");
+                        Console.WriteLine(" NEW MESSAGE RECIEVED\n\n Hey Girl!\n\n WTF is going with your team?");
                         Console.WriteLine(" Many of them are refusing to work, they're filing complaints, and I think one of them tried to doxx me.");
                         Console.WriteLine(" Anywho, due to the recent sitch, we're gonna have to let you go... super unfair, I know.");
                         Console.WriteLine(" But hey, if it makes you feel better, my fiance totally");
